@@ -1,0 +1,7 @@
+﻿################################################################################
+# This .gitignore file was automatically created by Microsoft(R) Visual Studio.
+################################################################################
+
+/.vs/PHPWebProject1
+/.vs/cs/v17
+/.vs/cs/FileContentIndex

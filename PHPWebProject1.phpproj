@@ -1,0 +1,14 @@
+<Project Sdk="Devsense.Php.Sdk">
+  <PropertyGroup Label="Globals">
+    <ProjectGuid>2ff2d182-904b-4d29-b37d-1ffa9d3e70be</ProjectGuid>
+  </PropertyGroup>
+  <PropertyGroup>
+    <EnvName>PHPDev</EnvName>
+  </PropertyGroup>
+  <ItemGroup>
+    <Content Remove="sassconfig.json.defaults" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="sassconfig.json.defaults" />
+  </ItemGroup>
+</Project>

@@ -1,0 +1,40 @@
+[
+  {
+    "outputFile": "site.css",
+    "inputFile": "Styles/style.scss"
+  },
+  {
+    "outputFile": "mincss.css",
+    "inputFile": "Styles/style.scss",
+    "sourceMap": true,
+    "style": "Compact"
+  },
+  {
+    "outputFile": "Styles/style.css",
+    "inputFile": "Styles/style.scss"
+  },
+  {
+    "outputFile": "Styles/style.css",
+    "inputFile": "Styles/style.scss"
+  },
+  {
+    "outputFile": "Styles/style.css",
+    "inputFile": "Styles/style.scss"
+  },
+  {
+    "outputFile": "Styles/style.css",
+    "inputFile": "Styles/style.scss"
+  },
+  {
+    "outputFile": "Styles/style.css",
+    "inputFile": "Styles/style.scss"
+  },
+  {
+    "outputFile": "Styles/style.css",
+    "inputFile": "Styles/style.scss"
+  },
+  {
+    "outputFile": "Styles/style.css",
+    "inputFile": "Styles/style.scss"
+  }
+]

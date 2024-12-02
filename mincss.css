@@ -1,0 +1,29 @@
+﻿body { background-color: #aef5fc; border-color: white; border-width: 10px; margin: 20px; }
+
+.home center { margin: auto; padding: 50px; }
+
+.home ul { list-style-type: none; margin: 1em; padding: 1em; overflow: hidden; border: 1px solid #e7e7e7; background-color: #f3f3f3; }
+
+.home li a { display: block; color: #aef5fc; text-align: center; padding: 14px 16px; text-decoration: none; }
+
+.signup ul { list-style-type: none; margin: 0; padding: 0; overflow: hidden; border: 1px solid #e7e7e7; background-color: #f3f3f3; }
+
+.signup li { float: left; }
+
+.signup li a { display: block; color: #666; text-align: center; padding: 14px 16px; text-decoration: none; }
+
+.signup li a:hover:not(.active) { background-color: #ddd; }
+
+.signup li a.active { color: white; background-color: #4CAF50; }
+
+.index ul { list-style-type: none; margin: 0; padding: 0; overflow: hidden; border: 1px solid #e7e7e7; background-color: #f3f3f3; }
+
+.index li { float: left; }
+
+.index li a { display: block; color: #666; text-align: center; padding: 14px 16px; text-decoration: none; }
+
+.index li a:hover:not(.active) { background-color: #ddd; }
+
+.index li a.active { color: white; background-color: #4CAF50; }
+
+/*# sourceMappingURL=style.css.map */

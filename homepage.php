@@ -9,7 +9,7 @@
 
 <body class="home">
 	<center>
-		<h1>Welcome to our website</h1>
+		<h1>Supernatural Database</h1>
 		
 		<div class="container">
 			<div class="row">
@@ -17,8 +17,8 @@
 				   
 				</div>
 				<div class="col">
-				  <h2>Character List</h2>
-					<p><a href='#' class='btn btn-primary'>Add new character</a></p>
+				  <h2>Persons of Interest</h2>
+					<p><a href='sheet.php' class='btn btn-primary'>Add new Person</a></p>
 					<ul>
 						<li><a href='#' class='btn btn-primary'>Character One</a></li>
 						<li><a href='#' class='btn btn-primary'>Character Two</a></li>

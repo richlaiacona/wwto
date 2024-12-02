@@ -1,8 +1,32 @@
 body {
-    background-color: rgb(174, 245, 252);
+    background-color:#e7e7e7;
     border-color: white;
     border-width: 10px;
     margin: 20px;
+}
+
+h1, h2, h3{
+    text-align:center;
+}
+
+.left{
+    text-align:left;
+}
+
+.right{
+    text-align:right;
+}
+.special{
+    font-style:italic;
+    margin-left:5px;
+}
+
+.inum {
+    text-align: center;
+}
+
+.center {
+    text-align: center;
 }
 
 .home {
@@ -26,6 +50,7 @@ body {
         text-align: center;
         padding: 14px 16px;
         text-decoration: none;
+        margin: 5px;
     }
 }
 

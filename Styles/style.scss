@@ -29,6 +29,28 @@ h1, h2, h3{
     text-align: center;
 }
 
+.gifts{
+    display:inline;
+    float:left;
+    position:relative;
+    margin:5px;
+}
+
+.row{
+    border: 1px solid white;
+    padding:10px;
+}
+
+.glory{
+    display:none;
+}
+
+.health {
+    display: inline-block;
+    margin: 5px;
+    width:15%;
+}
+
 .home {
     center {
         margin: auto;

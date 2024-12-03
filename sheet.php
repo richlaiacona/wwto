@@ -17,38 +17,11 @@
 
     const ww_head_titles = ["Name", "Breed", "Pack Name", "Player", "Auspice", "Pack Totem", "Chronicl", "Tribe", "Concept"];
     const ww_attributes_titles = ["Strength", "Charisma", "Perception", "Dexterity", "Manipilation", "Intelligence", "Stamina", "Appearance", "Wits"];
-    const ww_abilities_titles = [
-        "Alertness",
-        "Animal Ken",
-        "Academics",
-        "Athletics",
-        "Guns",
-        "Enigmas",
-        "Brawl",
-        "Crafts",
-        "Hearth Wisdom",
-        "Empathy",
-        "Etiquette",
-        "Investigation",
-        "Expression",
-        "Larceny",
-        "Law",
-        "Intimidation",
-        "Melee",
-        "Medicine",
-        "Leadership",
-        "Performance",
-        "Occult",
-        "Primal-Urge",
-        "Ride",
-        "Rituals",
-        "Streetwise",
-        "Stealth",
-        "Seneschal",
-        "Subterfuge",
-        "Survival",
-        "Science"
-    ];
+    const ww_abilities_titles = ["Alertness","Animal Ken","Academics","Athletics","Guns","Enigmas",
+        "Brawl","Crafts","Hearth Wisdom","Empathy","Etiquette","Investigation","Expression","Larceny",
+        "Law","Intimidation","Melee","Medicine","Leadership","Performance","Occult","Primal-Urge",
+        "Ride","Rituals","Streetwise","Stealth","Seneschal","Subterfuge","Survival","Science"];
+    const ww_health = '{"Brused":0,"Hurt":-1,"Injured":-1,"Wounded":-2,"Mauled":-2,"Crippled":-5,"Incapacitated":-1}';
 
     if (isset($_GET["id"]) && $_GET["id"] != "") {
         $id = $_GET["id"];
@@ -69,6 +42,15 @@
                 $abilities_values = $row["abilities"];
                 $abilities_specialization = $row["abilities_specialization"];
                 $backgrounds = $row["backgrounds"];
+                $gifts = $row["gifts"];
+                $glory_max = $row["glory_max"];
+                $glory_current = $row["glory_current"];
+                $honor_max = $row["honor_max"];
+                $honor_current = $row["honor_current"];
+                $wisdom_max = $row["wisdom_max"];
+                $wisdom_current = $row["wisdom_current"];
+                $rank = $row["rank"];
+                $experience = $row["experience"];
             } else {
                 header("Location: ../header.php?error=nouser");
                 exit();
@@ -81,6 +63,15 @@
         $abilities_values = ["0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0"];
         $abilities_specialization = ["", "", "", "", "", "", "grapple", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", ""];
         $backgrounds = json_decode('{"Contacts":3,"Resources":2}');
+        $gifts = ["gifts","Confident","Mind Peak"];
+        $glory_max = 5;
+        $glory_current = 1;
+        $honor_max = 6;
+        $honor_current = 2;
+        $wisdom_max = 3;
+        $wisdom_current = 1;
+        $rank = "Cliath";
+        $experience = "bal blaaa blaaa";
     }
     ?>
 	<div class="container">
@@ -146,6 +137,7 @@
                                 <option value='3' " . ($value == 3 ? " selected " : " ") . ">3</option>
                                 <option value='4' " . ($value == 4 ? " selected " : " ") . ">4</option>
                                 <option value='5' " . ($value == 5 ? " selected " : " ") . ">5</option>
+                                <option value='X'> X </option>
                             </select><br/>";
                     }
                 }
@@ -162,21 +154,177 @@
                     <option value="5">5</option>
                 </select>
             </div>
-			<div class='abilities col-md-4 col-sm-12 center'>
+			<div class='abilities col-md-8 col-sm-12'>
                 <h3>Gifts</h3>
-                <input class="" id="" name="" value=" add gift" />
+                	<?php
+                    foreach ($gifts as $gift) {
+                        echo '<div class="gifts"><input  type="text" class="gift" id="' . $gift . '" name="' . $gift . '" value="' . $gift . '" /><button>x</button></div>';
+                    }
+                    ?>
+                <div class="gifts">
+                    <input type="text" class="gift_add" id="gift" name="gift" value=" add gift" /><button>+</button>
+                </div>
             </div>
-			<div class='abilities col-md-4 col-sm-12 center'>
-                <h3>Gifts</h3>
-                <input class="" id="" name="" value=" add gift" />
-            </div>
-	<?php
-
-
-
-    ?>
 		</div>
+        <div class="row">
+            <div class='abilities col-md-4 col-sm-12 center'>
+                <h3>Renown</h3>
+                <h4>Glory</h4>
+                <button>-</button>
+                <?php
+                for ($i = 1; $i <= $glory_max; $i++) {
+                    echo "X";
+                }
+                $max = 10 - $glory_max;
+                for ($i = 1; $i <= $max; $i++) {
+                    echo "O";
+                }
+                echo "<button>+</button><br/><button>-</button>";
 
+                for ($i = 1; $i <= $glory_current; $i++) {
+                    echo "X";
+                }
+                $max = 10 - $glory_current;
+                for ($i = 1; $i <= $max; $i++) {
+                    echo "O";
+                }
+                ?>
+                <button>+</button>
+                <h4>Honor</h4>
+                 <button>-</button>
+                <?php
+                for ($i = 1; $i <= $honor_max; $i++) {
+                    echo "X";
+                }
+                $max = 10 - $honor_max;
+                for ($i = 1; $i <= $max; $i++) {
+                    echo "O";
+                }
+                echo "<button>+</button><br/><button>-</button>";
+
+                for ($i = 1; $i <= $honor_current; $i++) {
+                    echo "X";
+                }
+                $max = 10 - $honor_current;
+                for ($i = 1; $i <= $max; $i++) {
+                    echo "O";
+                }
+                ?>
+                <button>+</button>
+                <h4>Wisdom</h4>
+                 <button>-</button>
+                <?php
+                for ($i = 1; $i <= $wisdom_max; $i++) {
+                    echo "X";
+                }
+                $max = 10 - $wisdom_max;
+                for ($i = 1; $i <= $max; $i++) {
+                    echo "O";
+                }
+                echo "<button>+</button><br/><button>-</button>";
+
+                for ($i = 1; $i <= $wisdom_current; $i++) {
+                    echo "X";
+                }
+                $max = 10 - $wisdom_current;
+                for ($i = 1; $i <= $max; $i++) {
+                    echo "O";
+                }
+                ?>
+                <button>+</button>
+            </div>
+             <div class='abilities col-md-4 col-sm-12 center'>
+                 <br/>
+                <h4>Rage</h4>
+                <button>-</button>
+                <?php
+                for ($i = 1; $i <= $glory_max; $i++) {
+                    echo "X";
+                }
+                $max = 10 - $glory_max;
+                for ($i = 1; $i <= $max; $i++) {
+                    echo "O";
+                }
+                echo "<button>+</button><br/><button>-</button>";
+
+                for ($i = 1; $i <= $glory_current; $i++) {
+                    echo "X";
+                }
+                $max = 10 - $glory_current;
+                for ($i = 1; $i <= $max; $i++) {
+                    echo "O";
+                }
+                ?>
+                <button>+</button>
+                <h4>Gnosis</h4>
+                 <button>-</button>
+                <?php
+                for ($i = 1; $i <= $honor_max; $i++) {
+                    echo "X";
+                }
+                $max = 10 - $honor_max;
+                for ($i = 1; $i <= $max; $i++) {
+                    echo "O";
+                }
+                echo "<button>+</button><br/><button>-</button>";
+
+                for ($i = 1; $i <= $honor_current; $i++) {
+                    echo "X";
+                }
+                $max = 10 - $honor_current;
+                for ($i = 1; $i <= $max; $i++) {
+                    echo "O";
+                }
+                ?>
+                <button>+</button>
+                <h4>Willpower</h4>
+                 <button>-</button>
+                <?php
+                for ($i = 1; $i <= $wisdom_max; $i++) {
+                    echo "X";
+                }
+                $max = 10 - $wisdom_max;
+                for ($i = 1; $i <= $max; $i++) {
+                    echo "O";
+                }
+                echo "<button>+</button><br/><button>-</button>";
+
+                for ($i = 1; $i <= $wisdom_current; $i++) {
+                    echo "X";
+                }
+                $max = 10 - $wisdom_current;
+                for ($i = 1; $i <= $max; $i++) {
+                    echo "O";
+                }
+                ?>
+                <button>+</button>
+            </div>
+            <div class='abilities col-md-4 col-sm-12 center'>
+                 <br/>
+                <h4>Health</h4>
+                <?php
+                $health = json_decode(ww_health);
+                foreach ($health as $key => $value) {
+                    echo '<div class="health left">' . $key . '</div><div class="health right">' . $value .
+                        '</div><div class="health right">O</div><br/>';
+                }
+                ?>
+            </div>
+        </div>
+        <div class="row">
+            <div class='abilities col-md-4 col-sm-12 center'>
+                <h4>Rank</h4>
+                <?php
+                 echo '<input  type="text" class="rank" id="rank" name="rank" value="' . $rank . '" />';
+                ?>   
+            </div>
+             <div class='abilities col-md-8 col-sm-12 center'>
+                <h4>Experience</h4>
+                  <?php
+                  echo '<input  type="text" class="experience" id="experience" name="experience" value="' . $experience . '" />';
+                  ?>
+            </div>
+        </div>
 	</div>
     </form>
 

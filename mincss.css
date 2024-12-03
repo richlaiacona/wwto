@@ -12,6 +12,14 @@ h1, h2, h3 { text-align: center; }
 
 .center { text-align: center; }
 
+.gifts { display: inline; float: left; position: relative; margin: 5px; }
+
+.row { border: 1px solid white; padding: 10px; }
+
+.glory { display: none; }
+
+.health { display: inline-block; margin: 5px; width: 15%; }
+
 .home center { margin: auto; padding: 50px; }
 
 .home ul { list-style-type: none; margin: 1em; padding: 1em; overflow: hidden; border: 1px solid #e7e7e7; background-color: #f3f3f3; }

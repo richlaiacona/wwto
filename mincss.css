@@ -1,6 +1,22 @@
-﻿body { background-color: #e7e7e7; border-color: white; border-width: 10px; margin: 20px; }
+﻿.anaheim-normal { font-family: "Anaheim", sans-serif; font-optical-sizing: auto; font-weight: 400; font-style: normal; }
 
-h1, h2, h3 { text-align: center; }
+.anaheim-bold { font-family: "Anaheim", sans-serif; font-optical-sizing: auto; font-weight: 800; font-style: normal; }
+
+body { background-color: #e7e7e7; border-color: white; border-width: 10px; margin: 20px; font-family: "Anaheim", sans-serif; font-optical-sizing: auto; font-weight: 400; font-style: normal; }
+
+h1, h2, h3, h4, lable { text-align: center; font-family: "Anaheim", sans-serif; font-optical-sizing: auto; font-weight: 800; font-style: normal; }
+
+input[type="text"] { background: white; border: none; margin: 2px; }
+
+.head, .attributes, .abilities { /*border:dashed 1px black;*/ padding: 0px; margin: 0px; }
+
+.head_input { /*border: dashed 1px black;*/ }
+
+.wide { width: 100%; }
+
+.dots { display: inline-block; width: 10px; height: 10px; border-radius: 50%; background-color: white; margin-left: 2px; border: solid 1px black; }
+
+.circle { display: inline-block; width: 10px; height: 10px; border-radius: 50%; background-color: black; margin-left: 2px; }
 
 .left { text-align: left; }
 

@@ -58,9 +58,9 @@
         }
     } else {
         $head_values = ["Captain Jauces", "b", "c", "Rich", "e", "f", "g", "h", "i", "j"];
-        $attributes_values = ["1", "1", "1", "1", "1", "1", "1", "1", "1", "1"];
+        $attributes_values = ["5", "2", "2", "4", "1", "1", "1", "1", "1", "1"];
         $attributes_specialization = ["sweep/cleave", "", "", "", "", "", "", "", "", ""];
-        $abilities_values = ["0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0"];
+        $abilities_values = ["1", "2", "3", "4", "5", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0"];
         $abilities_specialization = ["", "", "", "", "", "", "grapple", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", ""];
         $backgrounds = json_decode('{"Contacts":3,"Resources":2}');
         $gifts = ["gifts","Confident","Mind Peak"];
@@ -73,6 +73,19 @@
         $rank = "Cliath";
         $experience = "bal blaaa blaaa";
     }
+ 
+    function dots($int){
+
+        for ($i = 1; $i <= $int; $i++) {
+            echo " • ";
+        }
+        $x = 10 - $int;
+        for ($i = 1; $i <= $x; $i++) {
+            echo " ◦ ";
+        }
+    }
+    
+
     ?>
 	<div class="container">
 		<div class="row">
@@ -81,7 +94,7 @@
 
     $i = 0;
     foreach (ww_head_titles as $head_title) {
-        echo "<div class='head col-md-2 col-sm-12 right'><lable>" . $head_title . "</label></div><div class='attributes col-md-2 col-sm-6 left'><input id='" . $head_title . "' name='" . $head_title . "' type='text' value='" . $head_values[$i] . "'></div>";
+        echo "<div class='head col-md-1 col-sm-12 right'><lable>" . $head_title . "</label></div><div class='head_input col-md-3 col-sm-6 left'><input class='wide' id='" . $head_title . "' name='" . $head_title . "' type='text' value='" . $head_values[$i] . "'></div>";
         $i++;
     }
 
@@ -98,12 +111,14 @@
 
     $i = 0;
     foreach (ww_attributes_titles as $attributes_title) {
-        echo "<div class='attributes col-md-2 col-sm-6 right'><lable>" . $attributes_title . "</label></div><div class='attributes col-md-2 col-sm-6 left'><input class='inum' id='" . $attributes_title . "' name='" . $attributes_title . "' type='text' value='" . $attributes_values[$i] . "' size='1' maxlength='2'><span class='special'>" . $attributes_specialization[$i] . "</span></div>";
+        echo "<div class='attributes col-md-1 col-sm-6 right'><lable>" . $attributes_title . "</label></div><div class='attributes col-md-3 col-sm-6 left'><input class='inum' id='" . $attributes_title . "' name='" . $attributes_title . "' type='text' value='" . $attributes_values[$i] . "' size='1' maxlength='2'><span class='special'>" . $attributes_specialization[$i] . "</span></div>";
+        echo "<script >addCirclesAfterNumber('" . $attributes_title . "')</script>";
         $i++;
     }
 
     ?>
-		</div>
+		
+        </div>
 		<div class="row">
 			
 			<div class='abilities col-sm-12'><br/><h2>Abilities</h2></div>
@@ -115,6 +130,7 @@
     $i = 0;
     foreach (ww_abilities_titles as $abilities_title) {
         echo "<div class='abilities col-md-2 col-sm-6 right'><lable>" . $abilities_title . "</label></div><div class='abilities col-md-2 col-sm-6 left'><input class='inum' id='" . $abilities_title . "' name='" . $abilities_title . "' type='text' value='" . $abilities_values[$i] . "' size='1' maxlength='2'><span class='special'>" . $abilities_specialization[$i] . "</span></div>";
+        echo "<script >addCirclesAfterNumber('" . $abilities_title . "')</script>";
         $i++;
     }
 

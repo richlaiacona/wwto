@@ -13,7 +13,9 @@
     font-weight: 800;
     font-style: normal;
 }
-
+.hidden{
+    display:none;
+}
 
 body {
     background-color: #e7e7e7;
@@ -41,7 +43,7 @@ input[type="text"] {
     
 }
 
-.head, .attributes, .abilities {
+.head, .attributes, .abilities, .backgrounds {
     /*border:dashed 1px black;*/
     padding: 0px;
     margin: 0px;
@@ -69,6 +71,14 @@ input[type="text"] {
     width: 10px;
     height: 10px;
     border-radius: 50%;
+    background-color: black;
+    margin-left: 2px;
+}
+
+.box {
+    display: inline-block;
+    width: 10px;
+    height: 10px;
     background-color: black;
     margin-left: 2px;
 }
@@ -205,4 +215,15 @@ input[type="text"] {
         background-color: #4CAF50;
     }
 
+}
+
+.my_btn {
+ 
+    font-weight: 800;
+    padding: 0px 7px;
+}
+
+#experience{
+    width:100%;
+    border:none;
 }

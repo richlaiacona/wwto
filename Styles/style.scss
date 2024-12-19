@@ -12,6 +12,7 @@
     font-optical-sizing: auto;
     font-weight: 800;
     font-style: normal;
+    font-stretch: 50%;
 }
 .hidden{
     display:none;
@@ -28,11 +29,19 @@ body {
     font-style: normal;
 }
 
-h1, h2, h3, h4, lable {
+h1, h2, h3, h4 {
     text-align: center;
     font-family: "Anaheim", sans-serif;
     font-optical-sizing: auto;
     font-weight: 800;
+    font-style: normal;
+}
+
+lable {
+    text-align: center;
+    font-family: "Anaheim", sans-serif;
+    font-optical-sizing: auto;
+    font-weight: 700;
     font-style: normal;
 }
 
@@ -87,12 +96,14 @@ input[type="text"] {
     text-align: left;
 }
 
-.right{
-    text-align:right;
+.right {
+    text-align: right;
+    font-stretch: 80%;
 }
 .special{
     font-style:italic;
     margin-left:5px;
+    
 }
 
 .inum {
@@ -226,4 +237,9 @@ input[type="text"] {
 #experience{
     width:100%;
     border:none;
+}
+
+.custom-col {
+    flex: 0 0 auto;
+    width: 30%; /* Adjust the width as needed */
 }

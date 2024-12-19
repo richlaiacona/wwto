@@ -9,24 +9,25 @@
 </head>
 <body class="signup">
 	<main>
-		<?php 
-	 	if (isset($_GET["error"])) {
-	 		if ($_GET["error"]=="emptyfields") {
-	 			echo '<p>Fill in all the fields</p>';
-	 		}else if($_GET["error"]=="invalidmailuid") {
-	 			echo '<p>Invalid user name and e-mail</p>';
-	 		}else if($_GET["error"]=="invalidmail") {
-	 			echo '<p>Invalid e-mail</p>';
-	 		}else if($_GET["error"]=="invaliduid") {
-	 			echo '<p>Invalid user name</p>';
-	 		}else if($_GET["error"]=="passwordcheck") {
-	 			echo '<p>Your Password do not match</p>';
-	 		}else if($_GET["error"]=="usertaken") {
-	 			echo '<p>User is already taken</p>';
-	 		}
-	 	}
-	 	 
-	 	?>
+		<div class="container">
+		<?php
+        if (isset($_GET["error"])) {
+            if ($_GET["error"] == "emptyfields") {
+                echo '<p>Fill in all the fields</p>';
+            } else if ($_GET["error"] == "invalidmailuid") {
+                echo '<p>Invalid user name and e-mail</p>';
+            } else if ($_GET["error"] == "invalidmail") {
+                echo '<p>Invalid e-mail</p>';
+            } else if ($_GET["error"] == "invaliduid") {
+                echo '<p>Invalid user name</p>';
+            } else if ($_GET["error"] == "passwordcheck") {
+                echo '<p>Your Password do not match</p>';
+            } else if ($_GET["error"] == "usertaken") {
+                echo '<p>User is already taken</p>';
+            }
+        }
+
+        ?>
 	 	<ul>
 	 	  <li><a class="active" href="#home">Home</a></li>
 	 	  <li><a href="#contact">Contact</a></li>
@@ -45,6 +46,8 @@
 	 		<button type="submit" class="btn btn-primary" name="signup-submit">Sign up</button>
 	 	</form>
 	 	<center><br><big><a href="index.php">Login</a></big></center>
+
+		</div>
 	 </main>
 </body>
 </html>

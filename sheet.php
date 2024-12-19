@@ -13,6 +13,8 @@
 
 	<h1>Character Sheet</h1>
 
+        <a href="#" onclick="gather()">save</a>
+
 	<?php
 
     const ww_head_titles = ["Name", "Breed", "Pack Name", "Player", "Auspice", "Pack Totem", "Chronicl", "Tribe", "Concept"];
@@ -117,7 +119,7 @@
 
     $i = 0;
     foreach (ww_head_titles as $head_title) {
-        echo "<div class='head col-md-1 col-sm-12 right'><lable>" . $head_title . "</label></div><div class='head_input col-md-3 col-sm-6 left'><input class='wide' id='" . $head_title . "' name='" . $head_title . "' type='text' value='" . $head_values[$i] . "'></div>";
+        echo "<div class='head col-md-1 col-sm-12 right'><lable>" . $head_title . "</label></div><div class='head_input col-md-3 col-sm-6 left'><input class='wide' id='" . str_replace(' ', '', $head_title) . "' name='" . str_replace(' ', '', $head_title) . "' type='text' value='" . $head_values[$i] . "'></div>";
         $i++;
     }
 
@@ -134,8 +136,9 @@
 
     $i = 0;
     foreach (ww_attributes_titles as $attributes_title) {
-        echo "<div class='attributes col-md-1 col-sm-6 right'><lable>" . $attributes_title . "</label></div><div class='attributes col-md-3 col-sm-6 left'><input class='inum' id='" . $attributes_title . "' name='" . $attributes_title . "' type='text' value='" . $attributes_values[$i] . "' size='1' maxlength='2'><span class='special'>" . $attributes_specialization[$i] . "</span></div>";
-        echo "<script >addCirclesAfterNumber('" . $attributes_title . "')</script>";
+        echo "<div class='attributes col-md-1 col-sm-6 right'><lable>" . $attributes_title . "</label></div><div class='attributes col-md-3 col-sm-6 left'><input class='inum' id='" . str_replace(' ', '', $attributes_title) . "' name='" . str_replace(' ', '', $attributes_title) . "' type='text' value='" . $attributes_values[$i] . "' size='1' maxlength='2'>";
+        echo "<input class='special' id='" . str_replace(' ', '', $attributes_title) . "_special' name='" . str_replace(' ', '', $attributes_title) . "_special' type='text' value='" . $attributes_specialization[$i] . "'></div>";
+        echo "<script >addCirclesAfterNumber('" . str_replace(' ', '', $attributes_title) . "')</script>";
         $i++;
     }
 
@@ -152,8 +155,9 @@
 
     $i = 0;
     foreach (ww_abilities_titles as $abilities_title) {
-        echo "<div class='abilities col-md-2 col-sm-6 right'><lable>" . $abilities_title . "</label></div><div class='abilities col-md-2 col-sm-6 left'><input class='inum' id='" . $abilities_title . "' name='" . $abilities_title . "' type='text' value='" . $abilities_values[$i] . "' size='1' maxlength='2'><span class='special'>" . $abilities_specialization[$i] . "</span></div>";
-        echo "<script >addCirclesAfterNumber('" . $abilities_title . "')</script>";
+        echo "<div class='abilities col-md-1 col-sm-6 right'><lable>" . $abilities_title . "</label></div><div class='abilities col-md-3 col-sm-6 left'><input class='inum' id='" . str_replace(' ', '', $abilities_title) . "' name='" . str_replace(' ', '', $abilities_title) . "' type='text' value='" . $abilities_values[$i] . "' size='1' maxlength='2'>";
+        echo "<input class='special' id='" . str_replace(' ', '', $abilities_title) . "_special' name='" . str_replace(' ', '', $abilities_title) . "_special' type='text' value='" . $abilities_specialization[$i] . "'></div>";
+        echo "<script >addCirclesAfterNumber('" . str_replace(' ', '', $abilities_title) . "')</script>";
         $i++;
     }
 
@@ -170,8 +174,8 @@
 
                     foreach ($backgrounds as $key => $value) {
                         echo "<input  type='text' class='backgrounds' id='bg_". $key."' name='backgrounds_" . $key . "_name' value=' " . $key . " ' />";
-                        echo "<input  type='text' class='hidden' id='bg_" . $value . "' name='backgrounds_" . $key . "_value' value=' " . $value . " ' />";
-                        echo "<script >addCirclesAfterDropDown('bg_" . $value . "')</script><br/>";
+                        echo "<input  type='text' class='hidden' id='hbg_" . $value . "' name='hbackgrounds_" . $key . "_value' value=' " . $value . " ' />";
+                        echo "<script >addCirclesAfterDropDown('hbg_" . $value . "')</script><br/>";
                     }
                 }
 

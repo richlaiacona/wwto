@@ -1,12 +1,14 @@
 ﻿.anaheim-normal { font-family: "Anaheim", sans-serif; font-optical-sizing: auto; font-weight: 400; font-style: normal; }
 
-.anaheim-bold { font-family: "Anaheim", sans-serif; font-optical-sizing: auto; font-weight: 800; font-style: normal; }
+.anaheim-bold { font-family: "Anaheim", sans-serif; font-optical-sizing: auto; font-weight: 800; font-style: normal; font-stretch: 50%; }
 
 .hidden { display: none; }
 
 body { background-color: #e7e7e7; border-color: white; border-width: 10px; margin: 20px; font-family: "Anaheim", sans-serif; font-optical-sizing: auto; font-weight: 400; font-style: normal; }
 
-h1, h2, h3, h4, lable { text-align: center; font-family: "Anaheim", sans-serif; font-optical-sizing: auto; font-weight: 800; font-style: normal; }
+h1, h2, h3, h4 { text-align: center; font-family: "Anaheim", sans-serif; font-optical-sizing: auto; font-weight: 800; font-style: normal; }
+
+lable { text-align: center; font-family: "Anaheim", sans-serif; font-optical-sizing: auto; font-weight: 700; font-style: normal; }
 
 input[type="text"] { background: white; border: none; margin: 2px; }
 
@@ -24,7 +26,7 @@ input[type="text"] { background: white; border: none; margin: 2px; }
 
 .left { text-align: left; }
 
-.right { text-align: right; }
+.right { text-align: right; font-stretch: 80%; }
 
 .special { font-style: italic; margin-left: 5px; }
 
@@ -69,5 +71,7 @@ input[type="text"] { background: white; border: none; margin: 2px; }
 .my_btn { font-weight: 800; padding: 0px 7px; }
 
 #experience { width: 100%; border: none; }
+
+.custom-col { flex: 0 0 auto; width: 30%; /* Adjust the width as needed */ }
 
 /*# sourceMappingURL=style.css.map */

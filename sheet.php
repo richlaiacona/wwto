@@ -96,15 +96,15 @@
         $m = $maximum;
         $c = null;
         $c = $current;
-        echo "<input  type='text' class='hidden' id='bg_" . $name . "' name='bg_" . $name . "' value=' " . $m . " ' />";
-        echo "<script >addCirclesAfterNumber('bg_" . $name. "')</script>";
+        echo "<input  type='text' class='hidden renown' id='" .  str_replace(' ', '',$name) . "' name='" .  str_replace(' ', '',$name) . "' value='" .  str_replace(' ', '',$m) . "' />";
+        echo "<script >addCirclesAfterNumber('" . str_replace(' ', '',$name). "')</script>";
         echo "<br/>";
         for ($i = 1; $i <= $c; $i++) {
-            echo "<input  type='checkbox' class='checkbox' id='bg_" . $c . "' name=''bg_" . $name . "'' value=' " . $i . " ' checked />";
+            echo "<input  type='checkbox' class='checkbox " . $name . "c' id='cb_" . $name . $i . "c' name='cb_" . $name . $i . "c' value='" . $i . "' checked />";
         }
         $max = 10 - $c;
         for ($i = 1; $i <= $max; $i++) {
-            echo "<input  type='checkbox' class='checkbox' id='bg_" . $c . "' name=''bg_" . $name . "'' value=' " . $i . " ' />";
+            echo "<input  type='checkbox' class='checkbox " . $name . "u' id='cb_" . $name . $i . "u' name='cb_" . $name . $i . "u' value='" . $i . "' />";
         }
         $m = null;
         $c = null;
@@ -173,8 +173,8 @@
                     $i = 0;
 
                     foreach ($backgrounds as $key => $value) {
-                        echo "<input  type='text' class='backgrounds' id='bg_". $key."' name='backgrounds_" . $key . "_name' value=' " . $key . " ' />";
-                        echo "<input  type='text' class='hidden' id='hbg_" . $value . "' name='hbackgrounds_" . $key . "_value' value=' " . $value . " ' />";
+                        echo "<input  type='text' class='backgrounds' id='bg_". str_replace(' ', '',$key)."' name='" . str_replace(' ', '',$key) . "' value='" . $key . "' />";
+                        echo "<input  type='text' class='hidden bgnumber' id='hbg_" . str_replace(' ', '',$value) . "' name='bgnumber_" . str_replace(' ', '',$key) . "' value='" . str_replace(' ', '',$value) . "' />";
                         echo "<script >addCirclesAfterDropDown('hbg_" . $value . "')</script><br/>";
                     }
                 }
@@ -195,7 +195,7 @@
                 <h3>Gifts</h3>
                 	<?php
                     foreach ($gifts as $gift) {
-                        echo '<div class="gifts"><input  type="text" class="gift" id="' . $gift . '" name="' . $gift . '" value="' . $gift . '" /><button id="' . $gift . '" class="btn btn-danger my_btn">X</button></div>';
+                        echo '<div class="gifts"><input  type="text" class="gift" id="' . str_replace(' ', '',$gift) . '" name="' . str_replace(' ', '',$gift) . '" value="' . $gift . '" /><button id="' . str_replace(' ', '',$gift) . '" class="btn btn-danger my_btn">X</button></div>';
                     }
                     ?>
                 <div class="gifts">

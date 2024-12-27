@@ -2,7 +2,7 @@ function addCirclesAfterNumber(elementId) {
     const element = document.getElementById(elementId);
     const number = element.value;
  
-    //console.log(element);
+   //console.log(element);
 
     if (!isNaN(number)) {
         element.innerHTML = `${number}`;
@@ -64,21 +64,23 @@ function gather() {
         "Law", "Intimidation", "Melee", "Medicine", "Leadership", "Performance", "Occult", "Primal-Urge",
         "Ride", "Rituals", "Streetwise", "Stealth", "Seneschal", "Subterfuge", "Survival", "Science"];
 
-    const backgrounds = { "Contacts": 3, "Resources": 2 };
+    let backgrounds = { "Contacts": 3, "Resources": 2 };
 
-    const gifts = ["gifts", "Confident", "Mind Peak"];
-    const glory_max = 5;
-    const glory_current = 1;
-    const honor_max = 6;
-    const honor_current = 2;
-    const wisdom_max = 3;
-    const wisdom_current = 1;
-    const rage_max = 6;
-    const rage_current = 1;
-    const gnosis_max = 4;
-    const gnosis_current = 0;
-    const will_max = 3;
-    const will_current = 1;
+    let gifts = ["gifts", "Confident", "Mind Peak"];
+    const renown = ["glory", "honor", "wisdom", "rage", "gnosis", "willpower"];
+
+    let glory_max = 5;
+    let glory_current = 1;
+    let honor_max = 6;
+    let honor_current = 2;
+    let wisdom_max = 3;
+    let wisdom_current = 1;
+    let rage_max = 6;
+    let rage_current = 1;
+    let gnosis_max = 4;
+    let gnosis_current = 0;
+    let will_max = 3;
+    let will_current = 1;
 
     head_values = getInputValues(head_titles);
     console.log(head_values);
@@ -86,7 +88,8 @@ function gather() {
     console.log(attributes_values);
     abilities_values = getInputValues(ww_abilities_titles);
     console.log(abilities_values);
-
+    backgrounds = getInputValuesBackgrounds();
+    console.log(backgrounds);
 
     function getInputValues(names) {
         let values = names.map(name => {
@@ -103,6 +106,26 @@ function gather() {
     abilities_special_values = getInputValuesSpecial(abilities_specialization);
     console.log(abilities_special_values);
 
+    gifts = getGifts();
+    console.log(gifts);
+
+    glory_max = getRenownMax("glory");
+    console.log(glory_max);
+    glory_current = getRenownCurrent("glory")
+    console.log(glory_current);
+
+    honor_max = getRenownMax("honor");
+    console.log(honor_max);
+    wisdom_max = getRenownMax("wisdom");
+    console.log(wisdom_max);
+    rage_max = getRenownMax("rage");
+    console.log(rage_max);
+    gnosis_max = getRenownMax("gnosis");
+    console.log(gnosis_max);
+    will_max = getRenownMax("willpower");
+    console.log(will_max);
+
+
     function getInputValuesSpecial(names) {
         let values = names.map(name => {
             let sp_name = name + "_special";
@@ -115,6 +138,53 @@ function gather() {
 
     let bg = "";
 
+    function getInputValuesBackgrounds() {
+        var bg = [];
+        var bgv = [];
+        var inputName = "";
+        $(".backgrounds").each(function () {
+            var val = "";
+            inputName = $(this).val();
+            val = '"' + inputName + '"';
+            bg.push(val);
+        });
+        $(".bgnumber").each(function () {
+            var inputValue = $(this).val();
+            bgv.push(inputValue);
+        });
+        var values = "{";
+        for (let i = 0; i < bg.length; i++) {
+            values += bg[i] + ":" + bgv[i];
+            if (i != bg.length - 1) {
+                values += ",";
+            }
+        }
+        values += "}";
+        return values;
+    }
+
+    function getGifts() {
+        var gifts = [];
+        $(".gift").each(function () {
+            //var value = "";
+            //value = '"' + $(this).val() + '"';
+            gifts.push($(this).val());
+        })
+        return gifts;
+    }
+    function getRenownMax(renown) {
+        var c = '#'+renown;
+        return $(c).val(); 
+    }
+
+    function getRenownCurrent(renown) {
+        var c = '.' + renown + 'c';
+        var current = "";
+        $(c).each(function () {
+            current = $(this).val();
+        })
+        return current;
+    }
 }
 //INSERT INTO `users`(`idUsers`, `uidUsers`, `emailUsers`, `pwdUsers`) VALUES ('[value-1]','[value-2]','[value-3]','[value-4]')
 //UPDATE `users` SET `idUsers`='[value-1]',`uidUsers`='[value-2]',`emailUsers`='[value-3]',`pwdUsers`='[value-4]' WHERE 1

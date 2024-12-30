@@ -65,10 +65,8 @@ function gather() {
         "Ride", "Rituals", "Streetwise", "Stealth", "Seneschal", "Subterfuge", "Survival", "Science"];
 
     let backgrounds = { "Contacts": 3, "Resources": 2 };
-
     let gifts = ["gifts", "Confident", "Mind Peak"];
     const renown = ["glory", "honor", "wisdom", "rage", "gnosis", "willpower"];
-
     let glory_max = 5;
     let glory_current = 1;
     let honor_max = 6;
@@ -78,113 +76,148 @@ function gather() {
     let rage_max = 6;
     let rage_current = 1;
     let gnosis_max = 4;
-    let gnosis_current = 0;
-    let will_max = 3;
-    let will_current = 1;
+    let gnosis_current = 1;
+    let willpower_max = 3;
+    let willpower_current = 1;
+    let health = ["Brused", "Hurt", "Injured", "Wounded", "Mauled", "Crippled", "Incapacitated"];
 
     head_values = getInputValues(head_titles);
-    console.log(head_values);
     attributes_values = getInputValues(ww_attributes_titles);
-    console.log(attributes_values);
     abilities_values = getInputValues(ww_abilities_titles);
-    console.log(abilities_values);
     backgrounds = getInputValuesBackgrounds();
-    console.log(backgrounds);
-
-    function getInputValues(names) {
-        let values = names.map(name => {
-            let selector = '#' + name.replaceAll(' ', '');
-            head_values = '"' + $(selector).val() + '"';
-            return head_values;
-        });
-        return values.join(',');
-    }
-
     attributes_special_values = getInputValuesSpecial(attributes_specialization);
-    console.log(attributes_special_values);
-
     abilities_special_values = getInputValuesSpecial(abilities_specialization);
-    console.log(abilities_special_values);
-
     gifts = getGifts();
-    console.log(gifts);
-
     glory_max = getRenownMax("glory");
-    console.log(glory_max);
     glory_current = getRenownCurrent("glory")
-    console.log(glory_current);
-
     honor_max = getRenownMax("honor");
-    console.log(honor_max);
+    honor_current = getRenownCurrent("honor")
     wisdom_max = getRenownMax("wisdom");
-    console.log(wisdom_max);
+    wisdom_current = getRenownCurrent("wisdom")
     rage_max = getRenownMax("rage");
-    console.log(rage_max);
+    rage_current = getRenownCurrent("rage")
     gnosis_max = getRenownMax("gnosis");
-    console.log(gnosis_max);
-    will_max = getRenownMax("willpower");
-    console.log(will_max);
+    gnosis_current = getRenownCurrent("gnosis")
+    willpower_max = getRenownMax("willpower");
+    willpower_current = getRenownCurrent("willpower")
+    health_current = getInputValuesHealth(health);
+    rank_current = getTextBox("rank");
+    experience_current = getTextBox("experience");
 
-
-    function getInputValuesSpecial(names) {
-        let values = names.map(name => {
-            let sp_name = name + "_special";
-            let selector = '#' + sp_name.replaceAll(' ', '');
-            head_values = '"' + $(selector).val() + '"';
-            return head_values;
-        });
-        return values.join(',');
+    var data = {
+        head: head_values,
+        attributes: attributes_values,
+        attributes_specialization: attributes_special_values,
+        abilities: abilities_values,
+        abilities_specialization: abilities_special_values,
+        backgrounds: backgrounds,
+        gifts: gifts,
+        glory_max: glory_max,
+        glory_current: glory_current,
+        honor_max: honor_max,
+        honor_current: honor_current,
+        wisdom_max: wisdom_max,
+        wisdom_current: wisdom_current,
+        rage_max: rage_max,
+        rage_current: rage_current,
+        gnosis_max: gnosis_max,
+        gnosis_current: gnosis_current,
+        willpower_max: willpower_max,
+        willpower_current: willpower_current,
+        health_current: health_current,
+        rank: rank_current,
+        experience: experience_current,
+        action: "save"
     }
-
-    let bg = "";
-
-    function getInputValuesBackgrounds() {
-        var bg = [];
-        var bgv = [];
-        var inputName = "";
-        $(".backgrounds").each(function () {
-            var val = "";
-            inputName = $(this).val();
-            val = '"' + inputName + '"';
-            bg.push(val);
-        });
-        $(".bgnumber").each(function () {
-            var inputValue = $(this).val();
-            bgv.push(inputValue);
-        });
-        var values = "{";
-        for (let i = 0; i < bg.length; i++) {
-            values += bg[i] + ":" + bgv[i];
-            if (i != bg.length - 1) {
-                values += ",";
-            }
+    console.log(data);
+    $.ajax({
+        type: "POST",
+        url: "sheet.php",
+        data: data,
+        success: function (response) {
+            console.log("Success:", response);
+        },
+        error: function (error) {
+            console.error("Error:", error);
         }
-        values += "}";
-        return values;
-    }
-
-    function getGifts() {
-        var gifts = [];
-        $(".gift").each(function () {
-            //var value = "";
-            //value = '"' + $(this).val() + '"';
-            gifts.push($(this).val());
-        })
-        return gifts;
-    }
-    function getRenownMax(renown) {
-        var c = '#'+renown;
-        return $(c).val(); 
-    }
-
-    function getRenownCurrent(renown) {
-        var c = '.' + renown + 'c';
-        var current = "";
-        $(c).each(function () {
-            current = $(this).val();
-        })
-        return current;
-    }
+    });
 }
+function getInputValues(names) {
+    let values = names.map(name => {
+        let selector = '#' + name.replaceAll(' ', '');
+        head_values = '"' + $(selector).val() + '"';
+        return head_values;
+    });
+    return values.join(',');
+}
+function getInputValuesSpecial(names) {
+    let values = names.map(name => {
+        let sp_name = name + "_special";
+        let selector = '#' + sp_name.replaceAll(' ', '');
+        head_values = '"' + $(selector).val() + '"';
+        return head_values;
+    });
+    return values.join(',');
+}
+function getInputValuesBackgrounds() {
+    var bg = [];
+    var bgv = [];
+    var inputName = "";
+    $(".backgrounds").each(function () {
+        var val = "";
+        inputName = $(this).val();
+        val = '"' + inputName + '"';
+        bg.push(val);
+    });
+    $(".bgnumber").each(function () {
+        var inputValue = $(this).val();
+        bgv.push(inputValue);
+    });
+    var values = "{";
+    for (let i = 0; i < bg.length; i++) {
+        values += bg[i] + ":" + bgv[i];
+        if (i != bg.length - 1) {
+            values += ",";
+        }
+    }
+    values += "}";
+    return values;
+}
+function getGifts() {
+    var gifts = [];
+    $(".gift").each(function () {
+        //var value = "";
+        //value = '"' + $(this).val() + '"';
+        gifts.push($(this).val());
+    })
+    return gifts;
+}
+function getRenownMax(renown) {
+    var c = '#'+renown;
+    return $(c).val(); 
+}
+function getRenownCurrent(renown) {
+    var c = '.' + renown + 'c';
+    var current = "";
+    $(c).each(function () {
+        current = $(this).val();
+    })
+    return current;
+}
+function getInputValuesHealth(names) {
+    let values = names.map(name => {
+        var id = '#'+name
+        if ($(id).is(':checked')) {
+            return '"' + name + '"'
+        } else {
+            return '""';
+        }
+    });
+    return values.join(',');
+}
+function getTextBox(name) {
+        return $("#" + name).val();
+    }
+
 //INSERT INTO `users`(`idUsers`, `uidUsers`, `emailUsers`, `pwdUsers`) VALUES ('[value-1]','[value-2]','[value-3]','[value-4]')
 //UPDATE `users` SET `idUsers`='[value-1]',`uidUsers`='[value-2]',`emailUsers`='[value-3]',`pwdUsers`='[value-4]' WHERE 1

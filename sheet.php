@@ -27,7 +27,7 @@
 
     if (isset($_GET["id"]) && $_GET["id"] != "") {
         $id = $_GET["id"];
-        $sql = "SELECT * FROM characters WHERE id=?";
+        $sql = "SELECT * FROM characters WHERE id=$id";
         $stmt = mysqli_stmt_init($conn);
         if (!mysqli_stmt_prepare($stmt, $sql)) {
             header("Location: ../header.php?error=sqlerror");
@@ -51,12 +51,13 @@
                 $honor_current = $row["honor_current"];
                 $wisdom_max = $row["wisdom_max"];
                 $wisdom_current = $row["wisdom_current"];
-                $rage_max = 6;
-                $rage_current = 6;
-                $gnosis_max = 6;
-                $gnosis_current = 6;
-                $will_max = 6;
-                $will_current = 6;
+                $rage_max = $row["rage_max"];
+                $rage_current = $row["rage_current"];
+                $gnosis_max = $row["gnosis_max"];
+                $gnosis_current = $row["gnosis_current"];
+                $willpower_max = $row["willpower_max"];
+                $willpower_current = $row["willpower_current"];
+                $currentHealth = $row["health_current"];
                 $rank = $row["rank"];
                 $experience = $row["experience"];
             } else {
@@ -81,12 +82,10 @@
         $rage_max = 6;
         $rage_current = 1;
         $gnosis_max = 4;
-        $gnosis_current = 0;
-        $will_max = 3;
-        $will_current = 1;
-
-
-
+        $gnosis_current = 2;
+        $willpower_max = 3;
+        $willpower_current = 1;
+        $currentHealth = ["", "Hurt", "", "", "", "", ""];
         $rank = "Cliath";
         $experience = "bal blaaa blaaa";
     }
@@ -108,6 +107,13 @@
         }
         $m = null;
         $c = null;
+    }
+
+    function healthCheck($currentHealth, $name){
+
+        if ( in_array($name, $currentHealth) ){
+            echo " checked ";
+        }
     }
     
 
@@ -237,7 +243,7 @@
                  ?>
                 <h4>Willpower</h4>
                  <?php
-                 dots($will_max, $will_current, "willpower");
+                 dots($willpower_max, $willpower_current, "willpower");
                  ?>
             </div>
             <div class='abilities col-md-4 col-sm-12 center'>
@@ -246,7 +252,10 @@
                 <?php
                 $health = json_decode(ww_health);
                 foreach ($health as $key => $value) {
-                    echo '<div class="health left">' . $key . '</div><div class="health right">' . $value . '</div><div class="health right"><input  type="checkbox" class="checkbox" id="' . $key . '" name="' . $key . '" value="' . $i . '" /></div><br/>';
+                    echo '<div class="health left">' . $key . '</div><div class="health right">' . $value . '</div><div class="health right">';
+                    echo '<input  type="checkbox" class="checkbox" id="' . $key . '" name="' . $key . '" value="' . $i . '" ';
+                    echo healthCheck($currentHealth, $key);
+                    echo ' /></div><br/>';
                 }
                 ?>
             </div>
